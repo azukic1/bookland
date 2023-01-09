@@ -1,6 +1,6 @@
 package ba.unsa.etf.rpr.domain;
 
-public class Reservation {
+public class Reservation implements Idable{
     private int id;
     private Book book;
     private User user;
