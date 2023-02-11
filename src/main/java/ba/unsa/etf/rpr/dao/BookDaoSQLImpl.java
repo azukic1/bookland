@@ -52,7 +52,26 @@ public class BookDaoSQLImpl extends AbstractDao<Book> implements BookDao{
     }
 
     @Override
-    public List<Book> searchByTitle(String title) {
-        return null;
+    public List<Book> searchByTitle(String title) throws BookException{
+        String query = "SELECT * FROM Books WHERE title LIKE concat('%', ?, '%')";
+        try{
+            PreparedStatement stmt = this.getConnection().prepareStatement(query);
+            stmt.setString(1,title);
+            ResultSet rs = stmt.executeQuery();
+            ArrayList<Book> bookList = new ArrayList<>();
+            while(rs.next()) {
+                Book b = new Book();
+                b.setId(rs.getInt(1));
+                b.setTitle(title);
+                b.setAuthor(rs.getString(3));
+                b.setNumberOfCopies(rs.getInt(4));
+                b.setAvailableCopies(rs.getInt(5));
+                bookList.add(b);
+            }
+            return bookList;
+
+        }catch(SQLException e) {
+            throw new BookException(e.getMessage(),e);
+        }
     }
 }
