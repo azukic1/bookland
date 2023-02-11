@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Book;
+import ba.unsa.etf.rpr.exceptions.BookException;
 
 import java.sql.ResultSet;
 import java.util.List;
@@ -13,22 +14,22 @@ public class BookDaoSQLImpl extends AbstractDao<Book> implements BookDao{
     }
 
     @Override
-    public Book row2object(ResultSet rs) {
+    public Book row2object(ResultSet rs) throws BookException {
         return null;
     }
 
     @Override
-    public Map<String, Object> object2row(Book object) {
+    public Map<String, Object> object2row(Book object) throws BookException {
         return null;
     }
 
     @Override
-    public List<Book> searchByAuthor(String author) {
+    public List<Book> searchByAuthor(String author) throws BookException {
         return null;
     }
 
     @Override
-    public List<Book> searchByTitle(String title) {
+    public List<Book> searchByTitle(String title) throws BookException {
         return null;
     }
 }

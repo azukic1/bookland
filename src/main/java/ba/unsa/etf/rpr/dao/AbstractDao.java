@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Idable;
+import ba.unsa.etf.rpr.exceptions.BookException;
 
 import java.sql.*;
 import java.util.List;
@@ -35,31 +36,31 @@ public abstract class AbstractDao <T extends Idable> implements Dao<T> {
     public static Connection getConnection(){
         return AbstractDao.connection;
     }
-    public abstract T row2object(ResultSet rs);
-    public abstract Map<String, Object> object2row(T object);
+    public abstract T row2object(ResultSet rs) throws BookException;
+    public abstract Map<String, Object> object2row(T object) throws BookException;
 
     @Override
-    public T getById(int id) {
+    public T getById(int id) throws BookException{
         return null;
     }
 
     @Override
-    public T add(T item) {
+    public T add(T item) throws BookException{
         return null;
     }
 
     @Override
-    public T update(T item) {
+    public T update(T item) throws BookException{
         return null;
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(int id) throws BookException{
 
     }
 
     @Override
-    public List<T> getAll() {
+    public List<T> getAll() throws BookException{
         return null;
     }
 }

@@ -5,6 +5,9 @@ public class Reservation implements Idable{
     private Book book;
     private User user;
 
+    public Reservation() {
+    }
+
     public Reservation(int id, Book book, User user) {
         this.id = id;
         this.book = book;

@@ -8,6 +8,9 @@ public class User implements Idable{
     private String password;
     private boolean isAdministrator;
 
+    public User() {
+    }
+
     public User(int id, String firstName, String lastName, String username, String password, boolean isAdministrator) {
         this.id = id;
         this.firstName = firstName;

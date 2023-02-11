@@ -8,6 +8,9 @@ public class Book implements Idable{
     private int numberOfCopies;
     private int availableCopies;
 
+    public Book() {
+    }
+
     public Book(int id, String name, String author, int numberOfCopies, int availableCopies) {
         this.id = id;
         this.title = name;
