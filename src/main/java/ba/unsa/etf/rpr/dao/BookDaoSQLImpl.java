@@ -1,16 +1,20 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Book;
+import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.BookException;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class BookDaoSQLImpl extends AbstractDao<Book> implements BookDao{
 
     public BookDaoSQLImpl() {
-        super("books");
+        super("Books");
     }
 
     @Override
@@ -25,11 +29,30 @@ public class BookDaoSQLImpl extends AbstractDao<Book> implements BookDao{
 
     @Override
     public List<Book> searchByAuthor(String author) throws BookException {
-        return null;
+        String query = "SELECT * FROM Books WHERE author LIKE concat('%', ?, '%')";
+        try{
+            PreparedStatement stmt = this.getConnection().prepareStatement(query);
+            stmt.setString(1,author);
+            ResultSet rs = stmt.executeQuery();
+            ArrayList<Book> bookList = new ArrayList<>();
+            while(rs.next()) {
+                Book b = new Book();
+                b.setId(rs.getInt(1));
+                b.setTitle(rs.getString(2));
+                b.setAuthor(author);
+                b.setNumberOfCopies(rs.getInt(4));
+                b.setAvailableCopies(rs.getInt(5));
+                bookList.add(b);
+            }
+            return bookList;
+
+        }catch(SQLException e) {
+            throw new BookException(e.getMessage(),e);
+        }
     }
 
     @Override
-    public List<Book> searchByTitle(String title) throws BookException {
+    public List<Book> searchByTitle(String title) {
         return null;
     }
 }

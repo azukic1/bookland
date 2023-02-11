@@ -9,7 +9,7 @@ import java.util.Map;
 public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements ReservationDao{
 
     public ReservationDaoSQLImpl() {
-        super("reservations");
+        super("Reservations");
     }
 
     @Override
