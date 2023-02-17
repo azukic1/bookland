@@ -75,6 +75,19 @@ public abstract class AbstractDao <T extends Idable> implements Dao<T> {
 
     @Override
     public List<T> getAll() throws BookException{
-     return null;
+        String query = "SELECT * FROM "+ tableName;
+        List<T> results = new ArrayList<T>();
+        try{
+            PreparedStatement stmt = getConnection().prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                T object = row2object(rs);
+                results.add(object);
+            }
+            rs.close();
+            return results;
+        }catch (SQLException e){
+            throw new BookException(e.getMessage(), e);
+        }
     }
 }
