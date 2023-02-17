@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
 
@@ -68,11 +69,28 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
 
     @Override
     public User row2object(ResultSet rs) throws BookException{
-        return null;
+        try {
+            User u = new User();
+            u.setId(rs.getInt(1));
+            u.setFirstName(rs.getString(2));
+            u.setLastName(rs.getString(3));
+            u.setUsername(rs.getString(4));
+            u.setPassword(rs.getString(5));
+            u.setAdministrator(rs.getBoolean(6));
+            return u;
+        }catch(Exception e) {
+            throw new BookException(e.getMessage(),e);
+        }
     }
 
     @Override
-    public Map<String, Object> object2row(User object) throws BookException {
-        return null;
+    public Map<String, Object> object2row(User object)  {
+        Map<String, Object> u = new TreeMap<String,Object>();
+        u.put("id",object.getId());
+        u.put("firstName",object.getFirstName());
+        u.put("lastName",object.getLastName());
+        u.put("username",object.getUsername());
+        u.put("password",object.getPassword());
+        return u;
     }
 }
