@@ -4,6 +4,7 @@ import ba.unsa.etf.rpr.domain.Idable;
 import ba.unsa.etf.rpr.exceptions.BookException;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -37,11 +38,25 @@ public abstract class AbstractDao <T extends Idable> implements Dao<T> {
         return AbstractDao.connection;
     }
     public abstract T row2object(ResultSet rs) throws BookException;
-    public abstract Map<String, Object> object2row(T object) throws BookException;
+    public abstract Map<String, Object> object2row(T object);
 
     @Override
     public T getById(int id) throws BookException{
-        return null;
+        String query = "SELECT * FROM "+this.tableName+" WHERE id = ?";
+        try {
+            PreparedStatement stmt = this.connection.prepareStatement(query);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                T result = row2object(rs);
+                rs.close();
+                return result;
+            } else {
+                throw new BookException("Object not found");
+            }
+        } catch (SQLException e) {
+            throw new BookException(e.getMessage(), e);
+        }
     }
 
     @Override
@@ -56,11 +71,10 @@ public abstract class AbstractDao <T extends Idable> implements Dao<T> {
 
     @Override
     public void delete(int id) throws BookException{
-
     }
 
     @Override
     public List<T> getAll() throws BookException{
-        return null;
+     return null;
     }
 }
