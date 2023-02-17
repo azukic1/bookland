@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class BookDaoSQLImpl extends AbstractDao<Book> implements BookDao{
 
@@ -19,12 +20,28 @@ public class BookDaoSQLImpl extends AbstractDao<Book> implements BookDao{
 
     @Override
     public Book row2object(ResultSet rs) throws BookException {
-        return null;
+        try{
+            Book b = new Book();
+            b.setId(rs.getInt(1));
+            b.setTitle(rs.getString(2));
+            b.setAuthor(rs.getString(3));
+            b.setNumberOfCopies(rs.getInt(4));
+            b.setAvailableCopies(rs.getInt(5));
+            return b;
+        }catch(Exception e) {
+            throw new BookException(e.getMessage(),e);
+        }
     }
 
     @Override
-    public Map<String, Object> object2row(Book object) throws BookException {
-        return null;
+    public Map<String, Object> object2row(Book object){
+        Map<String, Object> b = new TreeMap<String,Object>();
+        b.put("id",object.getId());
+        b.put("title",object.getTitle());
+        b.put("author",object.getAuthor());
+        b.put("numberOfCopies",object.getNumberOfCopies());
+        b.put("availableCopies",object.getAvailableCopies());
+        return b;
     }
 
     @Override
