@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.controllers;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -19,6 +20,17 @@ public class SignUpController {
 
     public SignUpController() {
 
+    }
+    @FXML
+    public void initialize() {
+        usernameId.textProperty().addListener((obs,oldValue,newValue)->{
+            if(newValue.length()>=5) neispravanUsernameId.setText("");
+            else neispravanUsernameId.setText("Invalid username");
+        });
+        passwordId.textProperty().addListener((obs,oldValue,newValue)->{
+            if(newValue.length()>=5) neispravanPasswordId.setText("");
+            else neispravanPasswordId.setText("Invalid password");
+        });
     }
 
     public void signUpAction(ActionEvent actionEvent) {
