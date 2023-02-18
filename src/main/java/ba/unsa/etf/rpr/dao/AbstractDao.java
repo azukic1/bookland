@@ -116,6 +116,14 @@ public abstract class AbstractDao <T extends Idable> implements Dao<T> {
 
     @Override
     public void delete(int id) throws BookException{
+        String sql = "DELETE FROM "+tableName+" WHERE id = ?";
+        try{
+            PreparedStatement stmt = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setObject(1, id);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            throw new BookException(e.getMessage(), e);
+        }
     }
 
     @Override
