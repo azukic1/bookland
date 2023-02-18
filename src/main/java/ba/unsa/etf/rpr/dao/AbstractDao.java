@@ -89,7 +89,29 @@ public abstract class AbstractDao <T extends Idable> implements Dao<T> {
 
     @Override
     public T update(T item) throws BookException{
-        return null;
+        Map<String, Object> row = object2row(item);
+        String updateColumns = prepareUpdateParts(row);
+        StringBuilder builder = new StringBuilder();
+        builder.append("UPDATE ")
+                .append(tableName)
+                .append(" SET ")
+                .append(updateColumns)
+                .append(" WHERE id = ?");
+
+        try{
+            PreparedStatement stmt = getConnection().prepareStatement(builder.toString());
+            int counter = 1;
+            for (Map.Entry<String, Object> entry: row.entrySet()) {
+                if (entry.getKey().equals("id")) continue;
+                stmt.setObject(counter, entry.getValue());
+                counter++;
+            }
+            stmt.setObject(counter+1, item.getId());
+            stmt.executeUpdate();
+            return item;
+        }catch (SQLException e){
+            throw new BookException(e.getMessage(), e);
+        }
     }
 
     @Override
@@ -129,6 +151,20 @@ public abstract class AbstractDao <T extends Idable> implements Dao<T> {
             }
         }
         return new AbstractMap.SimpleEntry<String,String>(columns.toString(), questions.toString());
+    }
+    private String prepareUpdateParts(Map<String, Object> row){
+        StringBuilder columns = new StringBuilder();
+
+        int counter = 0;
+        for (Map.Entry<String, Object> entry: row.entrySet()) {
+            counter++;
+            if (entry.getKey().equals("id")) continue;
+            columns.append(entry.getKey()).append("= ?");
+            if (row.size() != counter) {
+                columns.append(",");
+            }
+        }
+        return columns.toString();
     }
 
 }
