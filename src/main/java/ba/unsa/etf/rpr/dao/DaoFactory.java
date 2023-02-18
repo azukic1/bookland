@@ -1,9 +1,9 @@
 package ba.unsa.etf.rpr.dao;
 
 public class DaoFactory {
-    private static final BookDao bookDao = new BookDaoSQLImpl();
-    private static final ReservationDao reservationDao = new ReservationDaoSQLImpl();
-    private static final UserDao userDao = new UserDaoSQLImpl();
+    private static final BookDao bookDao =  BookDaoSQLImpl.getInstance();
+    private static final ReservationDao reservationDao = ReservationDaoSQLImpl.getInstance();
+    private static final UserDao userDao = UserDaoSQLImpl.getInstance();
 
     private DaoFactory() {
 

@@ -13,8 +13,21 @@ import java.util.TreeMap;
 
 public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
 
-    public UserDaoSQLImpl() {
+    private static UserDaoSQLImpl instance = null;
+
+    private UserDaoSQLImpl() {
         super("Users");
+    }
+
+    public static UserDaoSQLImpl getInstance(){
+        if(instance==null)
+            instance = new UserDaoSQLImpl();
+        return instance;
+    }
+
+    public static void removeInstance(){
+        if(instance!=null)
+            instance=null;
     }
 
     @Override

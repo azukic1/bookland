@@ -9,8 +9,20 @@ import java.util.TreeMap;
 
 public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements ReservationDao{
 
-    public ReservationDaoSQLImpl() {
+    private static ReservationDaoSQLImpl instance = null;
+
+    private ReservationDaoSQLImpl() {
         super("Reservations");
+    }
+    public static ReservationDaoSQLImpl getInstance(){
+        if(instance==null)
+            instance = new ReservationDaoSQLImpl();
+        return instance;
+    }
+
+    public static void removeInstance(){
+        if(instance!=null)
+            instance=null;
     }
 
     @Override

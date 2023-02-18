@@ -12,7 +12,7 @@ public abstract class AbstractDao <T extends Idable> implements Dao<T> {
 
     public AbstractDao(String tableName) {
         this.tableName = tableName;
-        createConnection();
+        if(connection == null) createConnection();
     }
 
     private static void createConnection(){
@@ -26,14 +26,26 @@ public abstract class AbstractDao <T extends Idable> implements Dao<T> {
                 AbstractDao.connection = DriverManager.getConnection(url, username, password);
             } catch (Exception e) {
                 e.printStackTrace();
-
-            }
+            }finally {
+            Runtime.getRuntime().addShutdownHook(new Thread(){
+                @Override
+                public void run(){
+                    try {
+                        connection.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
         }
     }
 
     public static Connection getConnection(){
         return AbstractDao.connection;
     }
+
+
     public abstract T row2object(ResultSet rs) throws BookException;
     public abstract Map<String, Object> object2row(T object);
 
