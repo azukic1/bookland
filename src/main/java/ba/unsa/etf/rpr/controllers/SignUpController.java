@@ -33,7 +33,7 @@ public class SignUpController {
             else neispravanUsernameId.setText("Invalid username");
         });
         passwordId.textProperty().addListener((obs,oldValue,newValue)->{
-            if(newValue.length()>=5) neispravanPasswordId.setText("");
+            if(newValue.length()>=8) neispravanPasswordId.setText("");
             else neispravanPasswordId.setText("Invalid password");
         });
     }
