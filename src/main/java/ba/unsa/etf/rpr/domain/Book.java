@@ -1,5 +1,9 @@
 package ba.unsa.etf.rpr.domain;
 
+/**
+ * bean for book
+ * @author Ajla Zukic
+ */
 
 public class Book implements Idable{
     private int id;
