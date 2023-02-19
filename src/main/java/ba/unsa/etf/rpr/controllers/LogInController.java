@@ -33,6 +33,8 @@ public class LogInController {
         stage.setScene(new Scene(loader.load(),USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         stage.setResizable(false);
         stage.show();
+        Stage s = (Stage)signupBttn.getScene().getWindow();
+        s.close();
 
     }
 
