@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.dao.DaoFactory;
+import ba.unsa.etf.rpr.domain.Book;
 import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.BookException;
 
@@ -22,6 +23,12 @@ public class UserManager {
     }
     public User getById(int userId) throws BookException {
         return DaoFactory.userDao().getById(userId);
+    }
+    public List<User> searchUsersByFirstName(String firstName) throws BookException {
+        return DaoFactory.userDao().searchByFirstName(firstName);
+    }
+    public List<User> searchUsersByLastName(String lastName) throws BookException {
+        return DaoFactory.userDao().searchByLastName(lastName);
     }
 
 }
