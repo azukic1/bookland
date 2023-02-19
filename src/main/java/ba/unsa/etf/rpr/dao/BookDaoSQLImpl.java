@@ -12,6 +12,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * MySQL implementation of the DAO
+ * @author Ajla Zukic
+ */
 public class BookDaoSQLImpl extends AbstractDao<Book> implements BookDao{
 
     private static BookDaoSQLImpl instance = null;
@@ -56,6 +60,12 @@ public class BookDaoSQLImpl extends AbstractDao<Book> implements BookDao{
         return b;
     }
 
+    /**
+     *
+     * @param author
+     * @return list of books
+     * @throws BookException
+     */
     @Override
     public List<Book> searchByAuthor(String author) throws BookException {
         String query = "SELECT * FROM Books WHERE author LIKE concat('%', ?, '%')";
@@ -80,6 +90,11 @@ public class BookDaoSQLImpl extends AbstractDao<Book> implements BookDao{
         }
     }
 
+    /**
+     * @param title
+     * @return list of books
+     * @throws BookException
+     */
     @Override
     public List<Book> searchByTitle(String title) throws BookException{
         String query = "SELECT * FROM Books WHERE title LIKE concat('%', ?, '%')";
