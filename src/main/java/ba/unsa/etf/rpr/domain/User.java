@@ -10,12 +10,12 @@ public class User implements Idable{
     private String lastName;
     private String username;
     private String password;
-    private boolean isAdministrator;
+    private int isAdministrator;
 
     public User() {
     }
 
-    public User(int id, String firstName, String lastName, String username, String password, boolean isAdministrator) {
+    public User(int id, String firstName, String lastName, String username, String password, int isAdministrator) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -64,11 +64,11 @@ public class User implements Idable{
         this.password = password;
     }
 
-    public boolean isAdministrator() {
+    public int isAdministrator() {
         return isAdministrator;
     }
 
-    public void setAdministrator(boolean administrator) {
+    public void setAdministrator(int administrator) {
         isAdministrator = administrator;
     }
 
@@ -90,11 +90,11 @@ public class User implements Idable{
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + firstName.hashCode();
-        result = 31 * result + lastName.hashCode();
-        result = 31 * result + username.hashCode();
-        result = 31 * result + password.hashCode();
-        result = 31 * result + (isAdministrator ? 1 : 0);
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + isAdministrator;
         return result;
     }
 
