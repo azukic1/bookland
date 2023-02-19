@@ -7,6 +7,11 @@ import ba.unsa.etf.rpr.exceptions.BookException;
 
 import java.util.List;
 
+/**
+ * Business Logic Layer for Users
+ * @author Ajla Zukic
+ */
+
 public class UserManager {
 
     public List<User> getAll() throws BookException {
@@ -24,9 +29,22 @@ public class UserManager {
     public User getById(int userId) throws BookException {
         return DaoFactory.userDao().getById(userId);
     }
+
+    /**
+     *
+     * @param firstName
+     * @return list of users
+     * @throws BookException
+     */
     public List<User> searchUsersByFirstName(String firstName) throws BookException {
         return DaoFactory.userDao().searchByFirstName(firstName);
     }
+
+    /**
+     * @param lastName
+     * @return list of users
+     * @throws BookException
+     */
     public List<User> searchUsersByLastName(String lastName) throws BookException {
         return DaoFactory.userDao().searchByLastName(lastName);
     }

@@ -7,6 +7,11 @@ import java.sql.ResultSet;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * MySQL implementation of the DAO
+ * @author Ajla Zukic
+ */
+
 public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements ReservationDao{
 
     private static ReservationDaoSQLImpl instance = null;
