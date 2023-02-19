@@ -11,6 +11,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * MySQL implementation of the DAO
+ * @author Ajla Zukic
+ */
 public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
 
     private static UserDaoSQLImpl instance = null;
@@ -30,6 +34,12 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
             instance=null;
     }
 
+    /**
+     *
+     * @param firstName
+     * @return list of users
+     * @throws BookException
+     */
     @Override
     public List<User> searchByFirstName(String firstName) throws BookException{
         String query = "SELECT * FROM Users WHERE firstName=?";
@@ -45,7 +55,7 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
                 u.setLastName(rs.getString(3));
                 u.setUsername(rs.getString(4));
                 u.setPassword(rs.getString(5));
-                u.setAdministrator(rs.getBoolean(6));
+                u.setAdministrator(rs.getInt(6));
                 userList.add(u);
             }
             return userList;
@@ -55,6 +65,12 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
         }
     }
 
+    /**
+     *
+     * @param lastName
+     * @return list of users
+     * @throws BookException
+     */
     @Override
     public List<User> searchByLastName(String lastName) throws BookException{
         String query = "SELECT * FROM Users WHERE lastName=?";
@@ -70,7 +86,7 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
                 u.setLastName(lastName);
                 u.setUsername(rs.getString(4));
                 u.setPassword(rs.getString(5));
-                u.setAdministrator(rs.getBoolean(6));
+                u.setAdministrator(rs.getInt(6));
                 userList.add(u);
             }
             return userList;
@@ -89,7 +105,7 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao{
             u.setLastName(rs.getString(3));
             u.setUsername(rs.getString(4));
             u.setPassword(rs.getString(5));
-            u.setAdministrator(rs.getBoolean(6));
+            u.setAdministrator(rs.getInt(6));
             return u;
         }catch(Exception e) {
             throw new BookException(e.getMessage(),e);
