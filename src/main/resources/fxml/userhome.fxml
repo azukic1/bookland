@@ -41,15 +41,15 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField alignment="TOP_LEFT" GridPane.columnIndex="1" />
+            <TextField fx:id="titleId" alignment="TOP_LEFT" GridPane.columnIndex="1" />
             <Label style="-fx-background-color: linen;" text="Search by author" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="60.0" />
                </GridPane.margin>
             </Label>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" text="Search " GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" text="Search " GridPane.columnIndex="2" />
+            <TextField fx:id="authorId" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="authorBttn" mnemonicParsing="false" onAction="#searchByAuthorAction" text="Search " GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="titleBttn" mnemonicParsing="false" onAction="#searchByTitleAction" text="Search " GridPane.columnIndex="2" />
             <Label prefHeight="17.0" prefWidth="109.0" style="-fx-background-color: linen;" text="Search by title">
                <GridPane.margin>
                   <Insets left="60.0" />
