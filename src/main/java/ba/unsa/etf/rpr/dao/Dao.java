@@ -4,6 +4,11 @@ import ba.unsa.etf.rpr.exceptions.BookException;
 
 import java.util.List;
 
+/**
+ * Root interface for all DAO classes
+ *@author Ajla Zukic
+ */
+
 public interface Dao<T> {
 
     T getById(int id) throws BookException;
