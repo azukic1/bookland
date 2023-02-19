@@ -1,5 +1,10 @@
 package ba.unsa.etf.rpr.domain;
 
+/**
+ * bean for reservation
+ * @author Ajla Zukic
+ */
+
 public class Reservation implements Idable{
     private int id;
     private Book book;

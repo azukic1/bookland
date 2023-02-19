@@ -1,5 +1,9 @@
 package ba.unsa.etf.rpr.domain;
 
+/**
+ * bean for user
+ * @author Ajla Zukic
+ */
 public class User implements Idable{
     private int id;
     private String firstName;
