@@ -6,6 +6,11 @@ import ba.unsa.etf.rpr.exceptions.BookException;
 
 import java.util.List;
 
+/**
+ * Business Logic Layer for Books
+ * @author Ajla Zukic
+ */
+
 public class BookManager {
     public List<Book> getAll() throws BookException {
         return DaoFactory.bookDao().getAll();
@@ -22,9 +27,21 @@ public class BookManager {
     public Book getById(int bookId) throws BookException {
         return DaoFactory.bookDao().getById(bookId);
     }
+
+    /**
+     * @param title
+     * @return list of books
+     * @throws BookException
+     */
     public List<Book> searchBooksByTitle(String title) throws BookException {
         return DaoFactory.bookDao().searchByTitle(title);
     }
+
+    /**
+     * @param author
+     * @return list of books
+     * @throws BookException
+     */
     public List<Book> searchBooksByAuthor(String author) throws BookException {
         return DaoFactory.bookDao().searchByAuthor(author);
     }
