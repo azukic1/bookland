@@ -7,12 +7,17 @@ import ba.unsa.etf.rpr.exceptions.BookException;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 public class BooksController {
     public Button addBookBttn;
@@ -36,9 +41,22 @@ public class BooksController {
     }
 
 
-    public void addBookAction(ActionEvent actionEvent) {
+    public void addBookAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addBook.fxml"));
+        AddBookController controller = new AddBookController();
+        loader.setController(controller);
+        stage.setTitle("");
+        stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        stage.setResizable(false);
+        stage.show();
+        stage.setOnHiding(x->{
+            String s = controller.titleId.getText() + " " + controller.authorId.getText();
+            listId.getItems().add(s);
 
+        });
     }
+
 
     public void deleteBookAction(ActionEvent actionEvent) throws BookException {
         List<Book> allBooks = FXCollections.observableList(bookManager.getAll());
