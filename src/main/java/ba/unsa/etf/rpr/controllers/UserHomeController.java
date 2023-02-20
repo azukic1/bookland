@@ -42,6 +42,14 @@ public class UserHomeController {
     }
 
     public void searchByAuthorAction(ActionEvent actionEvent) throws IOException, BookException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/listOfBooks.fxml"));
+        SearchByAuthorController controller = new SearchByAuthorController(authorId.getText());
+        loader.setController(controller);
+        stage.setTitle("");
+        stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        stage.setResizable(false);
+        stage.show();
 
     }
 
