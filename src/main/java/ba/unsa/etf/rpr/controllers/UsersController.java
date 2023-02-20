@@ -43,7 +43,11 @@ public class UsersController {
     }
 
     public void deleteBttnAction(ActionEvent actionEvent) throws BookException {
-
+        List<User> allUsers = FXCollections.observableList(userManager.getAll());
+        int i = listId.getSelectionModel().getSelectedIndex();
+        userManager.delete(allUsers.get(i).getId());
+        listId.getItems().remove(i);
+        listId.refresh();
     }
 
     public void cancelBttn(ActionEvent actionEvent) {
