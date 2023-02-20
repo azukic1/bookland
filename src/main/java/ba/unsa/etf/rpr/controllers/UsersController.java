@@ -63,5 +63,7 @@ public class UsersController {
     }
 
     public void cancelBttn(ActionEvent actionEvent) {
+        Stage stage = (Stage) listId.getScene().getWindow();
+        stage.close();
     }
 }
