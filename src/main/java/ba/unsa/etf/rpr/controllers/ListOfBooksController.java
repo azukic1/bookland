@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,7 @@ public class ListOfBooksController {
     }
 
     public void cancelAction(ActionEvent actionEvent) {
-
+        Stage stage = (Stage) listId.getScene().getWindow();
+        stage.close();
     }
 }
