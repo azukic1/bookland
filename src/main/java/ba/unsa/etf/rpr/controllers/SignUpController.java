@@ -59,7 +59,7 @@ public class SignUpController {
             u.setLastName(lastNameId.getText());
             u.setUsername(usernameId.getText());
             u.setPassword(passwordId.getText());
-            u.setAdministrator(false);
+            u.setAdministrator(0);
             userManager.add(u);
             Stage s = (Stage)signUpBttn.getScene().getWindow();
             s.close();

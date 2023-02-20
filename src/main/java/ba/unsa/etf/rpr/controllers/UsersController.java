@@ -5,6 +5,7 @@ import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.BookException;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -27,6 +28,7 @@ public class UsersController {
     public UsersController() {
     }
     private final UserManager userManager = new UserManager();
+    @FXML
     public void initialize() throws BookException {
         List<User> allUsers = FXCollections.observableList(userManager.getAll());
         List<String> users = new ArrayList<>();
