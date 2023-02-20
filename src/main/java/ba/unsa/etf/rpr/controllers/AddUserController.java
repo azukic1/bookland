@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.UserManager;
+import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.BookException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class AddUserController {
     public TextField firstNameId;
@@ -40,7 +42,15 @@ public class AddUserController {
     }
 
     public void addUserAction(ActionEvent actionEvent) throws BookException {
-
+        User u = new User();
+        u.setFirstName(firstNameId.getText());
+        u.setLastName(lastNameId.getText());
+        u.setUsername(usernameId.getText());
+        u.setPassword(passwordId.getText());
+        u.setAdministrator(0);
+        userManager.add(u);
+        Stage s = (Stage)addUserBttn.getScene().getWindow();
+        s.close();
     }
 
 
