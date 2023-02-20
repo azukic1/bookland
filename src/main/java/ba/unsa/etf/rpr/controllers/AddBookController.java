@@ -21,6 +21,15 @@ public class AddBookController {
     private final BookManager bookManager = new BookManager();
 
     public void addBookAction(ActionEvent actionEvent) throws BookException {
+        Book b = new Book();
+        b.setTitle(titleId.getText());
+        b.setAuthor(authorId.getText());
+        String number = copiesId.getText();
+        b.setNumberOfCopies(Integer.parseInt(number));
+        b.setAvailableCopies(Integer.parseInt(number));
+        bookManager.add(b);
+        Stage s = (Stage)addBookBttn.getScene().getWindow();
+        s.close();
 
     }
 }
