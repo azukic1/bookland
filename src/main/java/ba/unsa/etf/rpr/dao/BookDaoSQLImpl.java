@@ -78,7 +78,7 @@ public class BookDaoSQLImpl extends AbstractDao<Book> implements BookDao{
                 Book b = new Book();
                 b.setId(rs.getInt(1));
                 b.setTitle(rs.getString(2));
-                b.setAuthor(author);
+                b.setAuthor(rs.getString(3));
                 b.setNumberOfCopies(rs.getInt(4));
                 b.setAvailableCopies(rs.getInt(5));
                 bookList.add(b);
@@ -106,7 +106,7 @@ public class BookDaoSQLImpl extends AbstractDao<Book> implements BookDao{
             while(rs.next()) {
                 Book b = new Book();
                 b.setId(rs.getInt(1));
-                b.setTitle(title);
+                b.setTitle(rs.getString(2));
                 b.setAuthor(rs.getString(3));
                 b.setNumberOfCopies(rs.getInt(4));
                 b.setAvailableCopies(rs.getInt(5));
