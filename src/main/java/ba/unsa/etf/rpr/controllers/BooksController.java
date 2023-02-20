@@ -41,7 +41,11 @@ public class BooksController {
     }
 
     public void deleteBookAction(ActionEvent actionEvent) throws BookException {
-
+        List<Book> allBooks = FXCollections.observableList(bookManager.getAll());
+        int i = listId.getSelectionModel().getSelectedIndex();
+        bookManager.delete(allBooks.get(i).getId());
+        listId.getItems().remove(i);
+        listId.refresh();
     }
     public void cancelAction(ActionEvent actionEvent) {
         Stage stage = (Stage) listId.getScene().getWindow();
