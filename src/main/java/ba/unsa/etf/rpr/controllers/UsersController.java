@@ -39,7 +39,19 @@ public class UsersController {
     }
 
     public void addBttnAction(ActionEvent actionEvent) throws BookException, IOException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addUser.fxml"));
+        AddUserController controller = new AddUserController();
+        loader.setController(controller);
+        stage.setTitle("");
+        stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        stage.setResizable(false);
+        stage.show();
+        stage.setOnHiding(x->{
+            String s = controller.firstNameId.getText() + " " + controller.lastNameId.getText();
+            listId.getItems().add(s);
 
+        });
     }
 
     public void deleteBttnAction(ActionEvent actionEvent) throws BookException {
