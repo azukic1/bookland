@@ -13,6 +13,11 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * JavaFX Controller
+ *
+ * @author Ajla Zukic
+ */
 public class SearchByAuthorController {
     public ListView listId;
     public Button borrowBookBttn;
@@ -20,6 +25,10 @@ public class SearchByAuthorController {
     String author;
     private final BookManager bookManager = new BookManager();
 
+    /**
+     * class constructor
+     * @param a
+     */
     public SearchByAuthorController(String a) {
         author = a;
     }
@@ -37,7 +46,10 @@ public class SearchByAuthorController {
     public void borrowBookAction(ActionEvent actionEvent) {
 
     }
-
+    /**
+     * Method that closes current window
+     * @param actionEvent
+     */
     public void cancelAction(ActionEvent actionEvent) {
         Stage stage = (Stage) listId.getScene().getWindow();
         stage.close();
