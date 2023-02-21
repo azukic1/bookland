@@ -1,10 +1,12 @@
 package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.business.BookManager;
+import ba.unsa.etf.rpr.business.UserManager;
 import ba.unsa.etf.rpr.dao.BookDao;
 import ba.unsa.etf.rpr.dao.BookDaoSQLImpl;
 import ba.unsa.etf.rpr.dao.Dao;
 import ba.unsa.etf.rpr.domain.Book;
+import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.BookException;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -24,6 +26,7 @@ public class App
          System.out.println("Welcome to Bookland");
          Scanner input =  new Scanner(System.in);
          BookManager bookManager = new BookManager();
+         UserManager userManager =  new UserManager();
          while(true) {
              System.out.println("Choose an option from the following list");
              System.out.println("1 - Login as administrator");
@@ -34,6 +37,24 @@ public class App
              System.out.println("6 - Search for a book by author");
              System.out.println("7 - Close the application");
              int option = input.nextInt();
+             if(option == 2) {
+                 User u = new User();
+                 Scanner input3 = new Scanner(System.in);
+                 String name=" ", lasName="", username="", password="";
+                 System.out.println("Enter your name");
+                 name = input3.nextLine();
+                 System.out.println("Enter your last name");
+                 lasName = input3.nextLine();
+                 System.out.println("Enter your username");
+                 username = input3.nextLine();
+                 System.out.println("Enter your password");
+                 password = input3.nextLine();
+                 u.setFirstName(name);
+                 u.setLastName(lasName);
+                 u.setUsername(username);
+                 u.setPassword(password);
+                 userManager.add(u);
+             }
              if(option == 4) {
                  List<Book> books = FXCollections.observableList(bookManager.getAll());
                  for(int i = 0; i<books.size(); i++) {
