@@ -40,6 +40,20 @@ public class App
                      System.out.println(books.get(i).getTitle() + " " + books.get(i).getAuthor());
                  }
              }
+             if(option == 5) {
+                 String title = "";
+                 System.out.println("Enter title");
+                 Scanner input2 =  new Scanner(System.in);
+                 title = input2.nextLine();
+                 try {
+                     List<Book> books = FXCollections.observableList(bookManager.searchBooksByTitle(title));
+                     for (int i = 0; i < books.size(); i++) {
+                         System.out.println(books.get(i).getTitle() + " " + books.get(i).getAuthor());
+                     }
+                 }catch (BookException b) {
+                     System.out.println("There is no book in the list");
+                 }
+             }
              if(option == 7) return;
 
          }
