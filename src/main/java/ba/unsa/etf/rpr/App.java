@@ -79,6 +79,23 @@ public class App
                          System.out.println("4 - Delete a book");
                          System.out.println("5 - Close the application");
                          int option2 = input5.nextInt();
+                         if(option2 == 3) {
+                             Scanner input6 = new Scanner(System.in);
+                             String title="", author="";
+                             int number=0;
+                             System.out.println("Title:");
+                             title = input6.nextLine();
+                             System.out.println("Author:");
+                             author = input6.nextLine();
+                             System.out.println("Number of copies:");
+                             number = input6.nextInt();
+                             Book b = new Book();
+                             b.setTitle(title);
+                             b.setAuthor(author);
+                             b.setNumberOfCopies(number);
+                             b.setAvailableCopies(number);
+                             bookManager.add(b);
+                         }
                          if(option2 == 5) return;
                      }
                  }
