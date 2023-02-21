@@ -77,6 +77,24 @@ public class App
                  u.setPassword(password);
                  userManager.add(u);
              }
+             if(option == 3) {
+                 List<User> users = FXCollections.observableList(userManager.getAll());
+                 String username = "", password=" ";
+                 Scanner input4 = new Scanner(System.in);
+                 System.out.println("Enter username");
+                 username = input4.nextLine();
+                 int id = 0;
+                 for(int i = 0; i < users.size(); i++) {
+                     if(username.equals(users.get(i).getUsername())) {
+                         id = users.get(i).getId();
+                         break;
+                     }
+                     System.out.println(username);
+                 }
+                 System.out.println("Enter password");
+                 password = input4.nextLine();
+                 System.out.println("Welcome back " + userManager.getById(id).getFirstName());
+             }
              if(option == 4) {
                  List<Book> books = FXCollections.observableList(bookManager.getAll());
                  for(int i = 0; i<books.size(); i++) {
