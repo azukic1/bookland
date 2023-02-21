@@ -47,8 +47,30 @@ public class App
                  lasName = input3.nextLine();
                  System.out.println("Enter your username");
                  username = input3.nextLine();
+                 boolean valid = true;
+                 do {
+                     valid = true;
+                     List<User> users = FXCollections.observableList(userManager.getAll());
+                     for (int i = 0; i < users.size(); i++) {
+                         if (username.equals(users.get(i).getUsername())) {
+                             valid = false;
+                             System.out.println("Invalid username, try again");
+                             username = input3.nextLine();
+                         }
+                     }
+                     if(username.length()<5) {
+                         valid = false;
+                         System.out.println("Invalid username, try again");
+                         username = input3.nextLine();
+                     }
+                 }while(!valid);
                  System.out.println("Enter your password");
                  password = input3.nextLine();
+                 while(password.length()<5) {
+                     System.out.println("Invalid password, try again");
+                     password = input3.nextLine();
+                 }
+
                  u.setFirstName(name);
                  u.setLastName(lasName);
                  u.setUsername(username);
