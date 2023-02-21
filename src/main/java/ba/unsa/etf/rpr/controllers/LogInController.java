@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -56,7 +57,7 @@ public class LogInController {
             }
         }
         if(valid) {
-            if(allUsers.get(id).isAdministrator() == 1) {
+            if (allUsers.get(id).isAdministrator() == 1) {
                 Stage stage = new Stage();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/adminhome.fxml"));
                 AdminHomeController controller = new AdminHomeController();
@@ -67,8 +68,7 @@ public class LogInController {
                 stage.show();
                 Stage s = (Stage) loginBttn.getScene().getWindow();
                 s.close();
-            }
-            else {
+            } else {
                 Stage stage = new Stage();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userhome.fxml"));
                 UserHomeController controller = new UserHomeController();
@@ -82,6 +82,13 @@ public class LogInController {
 
             }
         }
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Invalid username or password");
+            alert.setContentText("Please try again");
+            alert.show();
+            }
     }
 
 
