@@ -11,7 +11,9 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Hello world!
+ * Main class
+ *
+ * @author Ajla Zukic
  *
  */
 public class App 
