@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * @author Ajla Zukic
+ */
 public class SignUpController {
 
     private final UserManager userManager = new UserManager();
@@ -23,9 +26,15 @@ public class SignUpController {
     public Label neispravanPasswordId;
     public Label neispravanUsernameId;
 
+    /**
+     * Class constructor
+     */
     public SignUpController() {
 
     }
+    /**
+     * This method checks if user entered valid information
+     */
     @FXML
     public void initialize() {
         usernameId.textProperty().addListener((obs,oldValue,newValue)->{
@@ -37,6 +46,13 @@ public class SignUpController {
             else neispravanPasswordId.setText("Invalid password");
         });
     }
+
+    /**
+     *
+     * @param actionEvent
+     * @throws BookException
+     * @throws IOException
+     */
 
     public void signUpAction(ActionEvent actionEvent) throws BookException, IOException {
         boolean valid = true;
