@@ -11,6 +11,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+
+/**
+ * JavaFX controller
+ *
+ * @author Ajla Zukic
+ */
 public class AddUserController {
     public TextField firstNameId;
     public TextField lastNameId;
@@ -22,9 +28,17 @@ public class AddUserController {
     String firstName, lastName;
     private final UserManager userManager = new UserManager();
 
+    /**
+     * class constructor
+     */
     public AddUserController() {
     }
 
+    /**
+     * class constructor
+     * @param firstName
+     * @param lastName
+     */
     public AddUserController(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -41,6 +55,11 @@ public class AddUserController {
         });
     }
 
+    /**
+     * This method add user
+     * @param actionEvent
+     * @throws BookException
+     */
     public void addUserAction(ActionEvent actionEvent) throws BookException {
         User u = new User();
         u.setFirstName(firstNameId.getText());
