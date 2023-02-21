@@ -19,6 +19,9 @@ import java.util.List;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
+/**
+ * @author Ajla Zukic
+ */
 public class LogInController {
 
     public TextField usernameId;
@@ -26,10 +29,17 @@ public class LogInController {
     public Button loginBttn;
     public Button signupBttn;
 
+    /**
+     * class constructor
+     */
     public LogInController() {
 
     }
 
+    /**
+     * @param actionEvent
+     * @throws IOException
+     */
     public void signUpActionn(ActionEvent actionEvent) throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/signup.fxml"));
