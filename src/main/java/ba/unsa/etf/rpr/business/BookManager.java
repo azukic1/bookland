@@ -5,6 +5,7 @@ import ba.unsa.etf.rpr.domain.Book;
 import ba.unsa.etf.rpr.exceptions.BookException;
 
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Business Logic Layer for Books
@@ -34,6 +35,7 @@ public class BookManager {
      * @throws BookException
      */
     public List<Book> searchBooksByTitle(String title) throws BookException {
+        if (DaoFactory.bookDao().searchByTitle(title).size() == 0) throw new BookException("");
         return DaoFactory.bookDao().searchByTitle(title);
     }
 
@@ -43,6 +45,8 @@ public class BookManager {
      * @throws BookException
      */
     public List<Book> searchBooksByAuthor(String author) throws BookException {
+        if (DaoFactory.bookDao().searchByAuthor(author).size() == 0) throw new BookException("");
         return DaoFactory.bookDao().searchByAuthor(author);
+
     }
 }
