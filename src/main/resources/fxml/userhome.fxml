@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="301.0" prefWidth="465.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="301.0" prefWidth="465.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="194.0" minWidth="10.0" prefWidth="85.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="383.0" minWidth="10.0" prefWidth="199.0" />
@@ -55,7 +49,7 @@
                   <Insets left="60.0" />
                </GridPane.margin>
             </Label>
-            <Button defaultButton="true" mnemonicParsing="false" prefHeight="29.0" prefWidth="201.0" text="Browse all titles" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button fx:id="booksId" defaultButton="true" mnemonicParsing="false" onAction="#browseAllAction" prefHeight="29.0" prefWidth="201.0" text="Browse all titles" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
    </children>
