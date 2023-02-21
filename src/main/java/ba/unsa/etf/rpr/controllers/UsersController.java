@@ -14,9 +14,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+/**
+ * JavaFX controller
+ *
+ * @author Ajla Zukic
+ */
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 public class UsersController {
@@ -25,6 +29,9 @@ public class UsersController {
     public Button deleteBttnId;
     public Button CancelId;
 
+    /**
+     * Class constructor
+     */
     public UsersController() {
     }
     private final UserManager userManager = new UserManager();
@@ -40,6 +47,12 @@ public class UsersController {
         listId.getItems().addAll(users);
     }
 
+    /**
+     * This method open new window, admin can add new book
+     * @param actionEvent
+     * @throws BookException
+     * @throws IOException
+     */
     public void addBttnAction(ActionEvent actionEvent) throws BookException, IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addUser.fxml"));
@@ -56,6 +69,11 @@ public class UsersController {
         });
     }
 
+    /**
+     *
+     * @param actionEvent
+     * @throws BookException
+     */
     public void deleteBttnAction(ActionEvent actionEvent) throws BookException {
         List<User> allUsers = FXCollections.observableList(userManager.getAll());
         int i = listId.getSelectionModel().getSelectedIndex();
@@ -64,6 +82,10 @@ public class UsersController {
         listId.refresh();
     }
 
+    /**
+     * Method that closes current window
+     * @param actionEvent
+     */
     public void cancelBttn(ActionEvent actionEvent) {
         Stage stage = (Stage) listId.getScene().getWindow();
         stage.close();
