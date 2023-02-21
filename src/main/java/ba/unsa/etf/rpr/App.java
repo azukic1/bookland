@@ -34,6 +34,12 @@ public class App
              System.out.println("6 - Search for a book by author");
              System.out.println("7 - Close the application");
              int option = input.nextInt();
+             if(option == 4) {
+                 List<Book> books = FXCollections.observableList(bookManager.getAll());
+                 for(int i = 0; i<books.size(); i++) {
+                     System.out.println(books.get(i).getTitle() + " " + books.get(i).getAuthor());
+                 }
+             }
              if(option == 7) return;
 
          }
