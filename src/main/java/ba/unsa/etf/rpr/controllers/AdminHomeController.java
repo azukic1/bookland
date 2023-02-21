@@ -10,15 +10,28 @@ import java.io.IOException;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
+
+/**
+ * JavaFX controller
+ *
+ * @author Ajla Zukic
+ */
 public class AdminHomeController {
 
     public Button usersBttn;
     public Button booksBttn;
 
+    /**
+     * class controller
+     */
     public AdminHomeController() {
 
     }
-
+    /**
+     *
+     * @param actionEvent
+     * @throws IOException
+     */
     public void booksBttnAction(ActionEvent actionEvent) throws IOException{
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/books.fxml"));
@@ -30,6 +43,11 @@ public class AdminHomeController {
         stage.show();
     }
 
+    /**
+     *
+     * @param actionEvent
+     * @throws IOException
+     */
     public void usersBttnAction(ActionEvent actionEvent) throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/users.fxml"));
