@@ -33,6 +33,8 @@ public class App
              System.out.println("5 - Search for a book by title ");
              System.out.println("6 - Search for a book by author");
              System.out.println("7 - Close the application");
+             int option = input.nextInt();
+             if(option == 7) return;
 
          }
     }
