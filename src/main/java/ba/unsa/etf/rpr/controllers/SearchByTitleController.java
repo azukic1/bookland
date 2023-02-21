@@ -13,6 +13,9 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Ajla Zukic
+ */
 public class SearchByTitleController {
     public ListView listId;
     public Button borrowBookBttn;
@@ -20,6 +23,10 @@ public class SearchByTitleController {
     String title;
     private final BookManager bookManager = new BookManager();
 
+    /**
+     * class constructor
+     * @param t
+     */
     public SearchByTitleController(String t) {
         title = t;
     }
@@ -38,7 +45,10 @@ public class SearchByTitleController {
     public void borrowBookAction(ActionEvent actionEvent) {
 
     }
-
+    /**
+     * Method that closes current window
+     * @param actionEvent
+     */
     public void cancelAction(ActionEvent actionEvent) {
         Stage stage = (Stage) listId.getScene().getWindow();
         stage.close();
