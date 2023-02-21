@@ -96,6 +96,13 @@ public class App
                              b.setAvailableCopies(number);
                              bookManager.add(b);
                          }
+                         if(option2 == 4) {
+                             Scanner input6 = new Scanner(System.in);
+                             int i = 0;
+                             System.out.println("Id:");
+                             i = input6.nextInt();
+                             bookManager.delete(i);
+                         }
                          if(option2 == 5) return;
                      }
                  }
