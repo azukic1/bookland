@@ -17,15 +17,28 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * JavaFX controller
+ *
+ * @author Ajla Zukic
+ */
 public class ListOfBooksController {
     public ListView listId;
     public Button borrowBookBttn;
     public Button cancelBttn;
     private int id;
 
+    /**
+     * class constructor
+     * @param id
+     */
     public ListOfBooksController(int id) {
         this.id = id;
     }
+
+    /**
+     * class constructor
+     */
     public ListOfBooksController() {}
 
     private final BookManager bookManager = new BookManager();
@@ -43,10 +56,9 @@ public class ListOfBooksController {
     }
     private final ReservationManager reservationManager = new ReservationManager();
     private final UserManager userManager = new UserManager();
-    //private final BookManager bookManager = new BookManager();
 
     public void borrowBookAction(ActionEvent actionEvent) throws BookException {
-        int in = listId.getSelectionModel().getSelectedIndex();
+       /* int in = listId.getSelectionModel().getSelectedIndex();
         Reservation r = new Reservation();
         List<User> users = FXCollections.observableList(userManager.getAll());
         for(int i = 0; i < users.size(); i++) {
@@ -64,9 +76,13 @@ public class ListOfBooksController {
         int n = books.get(in).getAvailableCopies();
         books.get(in).setAvailableCopies(n-1);
         bookManager.update(books.get(in));
-        System.out.println(id);
+        System.out.println(id);*/
     }
 
+    /**
+     * This method closes current window
+     * @param actionEvent
+     */
     public void cancelAction(ActionEvent actionEvent) {
         Stage stage = (Stage) listId.getScene().getWindow();
         stage.close();
