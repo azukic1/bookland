@@ -37,6 +37,41 @@ public class App
              System.out.println("6 - Search for a book by author");
              System.out.println("7 - Close the application");
              int option = input.nextInt();
+             if(option == 1) {
+                 List<User> users = FXCollections.observableList(userManager.getAll());
+                 String username = "", password=" ";
+                 Scanner input4 = new Scanner(System.in);
+                 System.out.println("Enter username");
+                 username = input4.nextLine();
+                 int id = 0;
+                 boolean valid = true;
+                 do {
+                     for (int i = 0; i < users.size(); i++) {
+                         if (username.equals(users.get(i).getUsername())) {
+                             id = users.get(i).getId();
+                             break;
+                         }
+                     }
+                     if(id == 0) {
+                         System.out.println("Username not found, try again");
+                         valid = false;
+                         username = input4.nextLine();
+                     }
+                     else valid = true;
+                 }while(!valid);
+                 boolean valid1 = false;
+                 System.out.println("Enter password");
+                 do {
+                     password = input4.nextLine();
+                     if (password.equals(userManager.getById(id).getPassword()))  {
+                         valid1 = true;
+                     }
+                     else System.out.println("Invalid password, try again");
+                 }while (!valid1);
+                 if(userManager.getById(id).isAdministrator() == 1)
+                 System.out.println("Welcome back " + userManager.getById(id).getFirstName());
+                 else System.out.println("You don't have administrator access");
+             }
              if(option == 2) {
                  User u = new User();
                  Scanner input3 = new Scanner(System.in);
