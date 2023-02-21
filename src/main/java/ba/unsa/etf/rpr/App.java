@@ -68,9 +68,22 @@ public class App
                      }
                      else System.out.println("Invalid password, try again");
                  }while (!valid1);
-                 if(userManager.getById(id).isAdministrator() == 1)
-                 System.out.println("Welcome back " + userManager.getById(id).getFirstName());
+                 Scanner input5 = new Scanner(System.in);
+                 if(userManager.getById(id).isAdministrator() == 1) {
+                     System.out.println("Welcome back " + userManager.getById(id).getFirstName());
+                     while(true) {
+                         System.out.println("Choose an option from the following list");
+                         System.out.println("1 - Add a user");
+                         System.out.println("2 - Delete a user");
+                         System.out.println("3 - Add a book");
+                         System.out.println("4 - Delete a book");
+                         System.out.println("5 - Close the application");
+                         int option2 = input5.nextInt();
+                         if(option2 == 5) return;
+                     }
+                 }
                  else System.out.println("You don't have administrator access");
+
              }
              if(option == 2) {
                  User u = new User();
