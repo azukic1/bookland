@@ -84,15 +84,31 @@ public class App
                  System.out.println("Enter username");
                  username = input4.nextLine();
                  int id = 0;
-                 for(int i = 0; i < users.size(); i++) {
-                     if(username.equals(users.get(i).getUsername())) {
-                         id = users.get(i).getId();
-                         break;
+                 boolean valid = true;
+                 do {
+                     for (int i = 0; i < users.size(); i++) {
+                         if (username.equals(users.get(i).getUsername())) {
+                             id = users.get(i).getId();
+                             break;
+                         }
                      }
-                     System.out.println(username);
-                 }
+                         if(id == 0) {
+                             System.out.println("Username not found, try again");
+                             valid = false;
+                             username = input4.nextLine();
+                         }
+                         else valid = true;
+                 }while(!valid);
+                 boolean valid1 = false;
                  System.out.println("Enter password");
-                 password = input4.nextLine();
+                 do {
+                     password = input4.nextLine();
+                         if (password.equals(userManager.getById(id).getPassword()))  {
+                             valid1 = true;
+                         }
+                         else System.out.println("Invalid password, try again");
+                 }while (!valid1);
+
                  System.out.println("Welcome back " + userManager.getById(id).getFirstName());
              }
              if(option == 4) {
