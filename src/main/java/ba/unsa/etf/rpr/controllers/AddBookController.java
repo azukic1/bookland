@@ -8,6 +8,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * @author Ajla Zukic
+ */
 public class AddBookController {
 
     public TextField titleId;
@@ -15,11 +18,19 @@ public class AddBookController {
     public TextField copiesId;
     public Button addBookBttn;
 
+    /**
+     * Class constructor
+     */
     public AddBookController() {
 
     }
     private final BookManager bookManager = new BookManager();
 
+    /**
+     * This method
+     * @param actionEvent
+     * @throws BookException
+     */
     public void addBookAction(ActionEvent actionEvent) throws BookException {
         Book b = new Book();
         b.setTitle(titleId.getText());
