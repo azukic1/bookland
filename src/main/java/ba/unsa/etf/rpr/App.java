@@ -2,16 +2,11 @@ package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.business.BookManager;
 import ba.unsa.etf.rpr.business.UserManager;
-import ba.unsa.etf.rpr.dao.BookDao;
-import ba.unsa.etf.rpr.dao.BookDaoSQLImpl;
-import ba.unsa.etf.rpr.dao.Dao;
 import ba.unsa.etf.rpr.domain.Book;
 import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.BookException;
 import javafx.collections.FXCollections;
-import javafx.fxml.FXML;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -79,6 +74,46 @@ public class App
                          System.out.println("4 - Delete a book");
                          System.out.println("5 - Close the application");
                          int option2 = input5.nextInt();
+                         if(option2 == 1) {
+                             User u = new User();
+                             Scanner input3 = new Scanner(System.in);
+                             String name=" ", lastName="", usernamee="", passwordd="";
+                             System.out.println("First name");
+                             name = input3.nextLine();
+                             System.out.println("Last name");
+                             lastName = input3.nextLine();
+                             System.out.println("Username");
+                             usernamee = input3.nextLine();
+                             boolean val = true;
+                             do {
+                                 valid = true;
+                                 List<User> list = FXCollections.observableList(userManager.getAll());
+                                 for (int i = 0; i < list.size(); i++) {
+                                     if (usernamee.equals(list.get(i).getUsername())) {
+                                         val = false;
+                                         System.out.println("Invalid username, try again");
+                                         usernamee = input3.nextLine();
+                                     }
+                                 }
+                                 if(usernamee.length()<5) {
+                                     val= false;
+                                     System.out.println("Invalid username, try again");
+                                     usernamee = input3.nextLine();
+                                 }
+                             }while(!val);
+                             System.out.println("Password");
+                             passwordd = input3.nextLine();
+                             while(passwordd.length()<8) {
+                                 System.out.println("Invalid password, try again");
+                                 passwordd = input3.nextLine();
+                             }
+                             u.setFirstName(name);
+                             u.setLastName(lastName);
+                             u.setUsername(usernamee);
+                             u.setPassword(passwordd);
+                             userManager.add(u);
+
+                         }
                          if(option2 == 2) {
                              boolean v = false;
                              List<User> user = FXCollections.observableList(userManager.getAll());
