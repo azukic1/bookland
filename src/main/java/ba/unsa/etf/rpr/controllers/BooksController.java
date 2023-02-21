@@ -2,7 +2,6 @@ package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.BookManager;
 import ba.unsa.etf.rpr.domain.Book;
-import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.BookException;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -19,6 +18,11 @@ import java.util.List;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
+/**
+ * JavaFX controller
+ *
+ * @author Ajla Zukic
+ */
 public class BooksController {
     public Button addBookBttn;
     public Button deleteBookBttn;
@@ -26,6 +30,10 @@ public class BooksController {
     public ListView listId;
 
     private final BookManager bookManager = new BookManager();
+
+    /**
+     * class constructor
+     */
     public BooksController() {
 
     }
@@ -40,7 +48,11 @@ public class BooksController {
         listId.getItems().addAll(books);
     }
 
-
+    /**
+     * This method open new window, admin can add new book
+     * @param actionEvent
+     * @throws IOException
+     */
     public void addBookAction(ActionEvent actionEvent) throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/addBook.fxml"));
@@ -57,7 +69,11 @@ public class BooksController {
         });
     }
 
-
+    /**
+     *
+     * @param actionEvent
+     * @throws BookException
+     */
     public void deleteBookAction(ActionEvent actionEvent) throws BookException {
         List<Book> allBooks = FXCollections.observableList(bookManager.getAll());
         int i = listId.getSelectionModel().getSelectedIndex();
@@ -65,6 +81,11 @@ public class BooksController {
         listId.getItems().remove(i);
         listId.refresh();
     }
+
+    /**
+     * This method closes current window
+     * @param actionEvent
+     */
     public void cancelAction(ActionEvent actionEvent) {
         Stage stage = (Stage) listId.getScene().getWindow();
         stage.close();
