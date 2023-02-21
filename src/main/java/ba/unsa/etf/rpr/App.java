@@ -79,6 +79,19 @@ public class App
                          System.out.println("4 - Delete a book");
                          System.out.println("5 - Close the application");
                          int option2 = input5.nextInt();
+                         if(option2 == 2) {
+                             boolean v = false;
+                             List<User> user = FXCollections.observableList(userManager.getAll());
+                             Scanner input6 = new Scanner(System.in);
+                             int indeks = 0;
+                             System.out.println("Id:");
+                             indeks = input6.nextInt();
+                             for(int i = 0; i<user.size(); i++) {
+                                 if(user.get(i).getId()==indeks) v = true;
+                             }if(v)
+                             userManager.delete(indeks);
+                             else System.out.println("User not found");
+                         }
                          if(option2 == 3) {
                              Scanner input6 = new Scanner(System.in);
                              String title="", author="";
