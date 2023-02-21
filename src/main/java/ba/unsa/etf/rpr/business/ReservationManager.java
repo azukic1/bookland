@@ -2,10 +2,14 @@ package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Reservation;
-import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.BookException;
 
 import java.util.List;
+
+/**
+ * Business Logic Layer for Reservations
+ * @author Ajla Zukic
+ */
 
 public class ReservationManager {
     public List<Reservation> getAll() throws BookException {
